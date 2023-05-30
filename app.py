@@ -39,7 +39,7 @@ main_config = {
 
 # ===== Limpando o arquivo====== #
 #Local dataset: https://www.kaggle.com/datasets/matheusfreitag/gas-prices-in-brazil
-df_main = pd.read_csv(r"assets\data_gas.csv")
+df_main = pd.read_csv("data_gas.csv")
 
 #df_main.info()
 #Ajustado data
