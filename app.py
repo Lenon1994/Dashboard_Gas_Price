@@ -166,36 +166,34 @@ app.layout = dbc.Container(children=[
     ], className='main_row g-2 my-auto'),
     
 # Segunda linha do projeto
+    
     dbc.Row([
+        #Grafico bignumbers
         dbc.Col([
-            dbc.Card([
-                dbc.CardBody([
-                   html.H4('Preço X Estado'),
-                   html.H6('Comparação temporal entre estados') ,
-                   dbc.Row([
-                       dbc.Col([
-                           dcc.Dropdown(
-                                id="select_estados0",
-                                value=[df_main.at[df_main.index[3],"ESTADO"],df_main.at[df_main.index[13],"ESTADO"], df_main.at[df_main.index[6],"ESTADO"]],
-                                clearable= False,
-                                className='dbc',
-                                multi=True,
-                                options=[
-                                    {"label": x, "value": x} for x in df_main.ESTADO.unique()
-                                ]
-                            ),
-                       ], sm=10)
-                   ]),
-                   dbc.Row([
-                       dbc.Col([
-                           dcc.Graph(id='animation_graph', config={"displayModeBar": False, "showTips": False})
-                       ])
-                   ])
-                   
+            #Grafico bignumber 1
+            dbc.Row([
+                dbc.Col([
+                    dbc.Card([
+                       dbc.CardBody([
+                           dcc.Graph(id='card1_indicadores', config={"displayModeBar": False, "showTips": False}),
+                       ]) 
+                    ],style=tab_card)
                 ])
-            ], style=tab_card)
-        ], sm=12, md=6, lg=5),
-        #Grafico de comparação entre estados
+            ],justify="center", style={"height": "50%"}),
+            #Grafico bignumber 2
+            dbc.Row([
+                dbc.Col([
+                    dbc.Card([
+                       dbc.CardBody([
+                           dcc.Graph(id='card2_indicadores', config={"displayModeBar": False, "showTips": False}),
+                       ]) 
+                    ],style=tab_card)
+                ])
+            ],justify="center", style={"height": "50%"})
+        ], sm=12, lg=2, style={"height": "100%"}),
+    
+    
+    #Grafico de comparação entre estados
         dbc.Col([
             dbc.Card([
                 dbc.CardBody([
@@ -230,30 +228,39 @@ app.layout = dbc.Container(children=[
                 ])
             ], style=tab_card)
         ],sm=12, md=6, lg=5),
-        #Grafico bignumbers
+        
+    #Grafico preço X  Estado
         dbc.Col([
-            #Grafico bignumber 1
-            dbc.Row([
-                dbc.Col([
-                    dbc.Card([
-                       dbc.CardBody([
-                           dcc.Graph(id='card1_indicadores', config={"displayModeBar": False, "showTips": False}),
-                       ]) 
-                    ],style=tab_card)
+            dbc.Card([
+                dbc.CardBody([
+                   html.H4('Preço X Estado'),
+                   html.H6('Comparação temporal entre estados') ,
+                   dbc.Row([
+                       dbc.Col([
+                           dcc.Dropdown(
+                                id="select_estados0",
+                                value=[df_main.at[df_main.index[3],"ESTADO"],df_main.at[df_main.index[13],"ESTADO"], df_main.at[df_main.index[6],"ESTADO"]],
+                                clearable= False,
+                                className='dbc',
+                                multi=True,
+                                options=[
+                                    {"label": x, "value": x} for x in df_main.ESTADO.unique()
+                                ]
+                            ),
+                       ], sm=10)
+                   ]),
+                   dbc.Row([
+                       dbc.Col([
+                           dcc.Graph(id='animation_graph', config={"displayModeBar": False, "showTips": False})
+                       ])
+                   ])
+                   
                 ])
-            ],justify="center", style={"height": "50%"}),
-            #Grafico bignumber 2
-            dbc.Row([
-                dbc.Col([
-                    dbc.Card([
-                       dbc.CardBody([
-                           dcc.Graph(id='card2_indicadores', config={"displayModeBar": False, "showTips": False}),
-                       ]) 
-                    ],style=tab_card)
-                ])
-            ],justify="center", style={"height": "50%"})
-        ], sm=12, lg=2, style={"height": "100%"})
+            ], style=tab_card)
+        ], sm=12, md=6, lg=5),
     ],className='main_row g-2 my-auto'),
+        
+
 #Terceira linha do projeto
     dbc.Row([
         dbc.Col([
